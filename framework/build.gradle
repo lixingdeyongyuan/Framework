@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    api "io.reactivex.rxjava2:rxjava:${rxjava2_version}"
+    api "io.reactivex.rxjava2:rxandroid:${rxandroid_version}"
+    implementation "com.trello.rxlifecycle3:rxlifecycle:${rxlifecycle_version}"
+    implementation "com.trello.rxlifecycle3:rxlifecycle-android:${rxlifecycle_version}"
+    implementation "com.trello.rxlifecycle3:rxlifecycle-components:${rxlifecycle_version}"
+    implementation 'com.github.lixingdeyongyuan:Log:1.1-SNAPSHOT'
+    api "com.uber.autodispose:autodispose:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-lifecycle:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-lifecycle-jdk8:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-lifecycle-ktx:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-android:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-android-archcomponents:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-ktx:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-android-ktx:${autodispose_version}"
+    api "com.uber.autodispose:autodispose-android-archcomponents-ktx:${autodispose_version}"
+}
