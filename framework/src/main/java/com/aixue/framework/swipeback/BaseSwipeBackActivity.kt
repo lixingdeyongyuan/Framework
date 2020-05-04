@@ -13,7 +13,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper
 /**
  * 侧滑返回界面
  */
-class BaseSwipeBackActivity : BaseActivity(), SwipeBackActivityBase {
+open class BaseSwipeBackActivity : BaseActivity(), SwipeBackActivityBase {
 
     companion object {
         val KEY_TRACKING_MODE = "KEY_TRACKING_MODE"
