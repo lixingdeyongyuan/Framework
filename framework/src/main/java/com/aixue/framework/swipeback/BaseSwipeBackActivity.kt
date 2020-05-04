@@ -20,7 +20,7 @@ class BaseSwipeBackActivity : BaseActivity(), SwipeBackActivityBase {
     }
 
     private var mHelper: SwipeBackActivityHelper? = null
-    private lateinit var mSwipeBackLayout: SwipeBackLayout
+    lateinit var mSwipeBackLayout: SwipeBackLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
