@@ -1,4 +1,4 @@
-package com.aixue.framework.common;
+package com.aixue.framework.swipeback;
 
 import android.content.Context;
 import android.content.SharedPreferences;

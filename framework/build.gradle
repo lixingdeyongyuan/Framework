@@ -12,7 +12,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -23,15 +22,22 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.0.2'
     api "io.reactivex.rxjava2:rxjava:${rxjava2_version}"
     api "io.reactivex.rxjava2:rxandroid:${rxandroid_version}"
+    implementation "me.imid.swipebacklayout.lib:library:${swipebacklayout_version}"
     implementation "com.trello.rxlifecycle3:rxlifecycle:${rxlifecycle_version}"
     implementation "com.trello.rxlifecycle3:rxlifecycle-android:${rxlifecycle_version}"
     implementation "com.trello.rxlifecycle3:rxlifecycle-components:${rxlifecycle_version}"
@@ -44,5 +50,5 @@ dependencies {
     api "com.uber.autodispose:autodispose-ktx:${autodispose_version}"
     api "com.uber.autodispose:autodispose-android-ktx:${autodispose_version}"
     api "com.uber.autodispose:autodispose-android-archcomponents-ktx:${autodispose_version}"
-    implementation "me.imid.swipebacklayout.lib:library:${swipebacklayout_version}"
+
 }

@@ -1,13 +1,7 @@
 package com.aixue.framework
 
 import android.content.Context
-import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import com.aixue.framework.log.LogProxy
-import com.aixue.mlog.RLog
-import com.uber.autodispose.AutoDisposeConverter
 
 /**
  * Created by haha on 2019/11/21.

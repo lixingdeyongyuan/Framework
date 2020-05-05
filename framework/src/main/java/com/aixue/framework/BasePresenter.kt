@@ -4,7 +4,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
 import com.aixue.framework.log.LogProxy
-import com.aixue.mlog.RLog
 import com.uber.autodispose.AutoDisposeConverter
 
 open class BasePresenter<V : BaseView> : LifecycleEventObserver, FullLifecycleObserver {
