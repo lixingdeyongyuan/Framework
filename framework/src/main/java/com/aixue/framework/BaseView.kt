@@ -1,4 +1,4 @@
-package com.aixue.sodu.main
+package com.aixue.framework
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner

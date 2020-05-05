@@ -1,4 +1,4 @@
-package com.aixue.sodu.main
+package com.aixue.framework
 
 import android.os.Bundle
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity

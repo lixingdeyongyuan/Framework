@@ -1,10 +1,11 @@
-package com.aixue.sodu.main
+package com.aixue.framework
 
 import android.content.Context
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
+import com.aixue.framework.log.LogProxy
 import com.aixue.mlog.RLog
 import com.uber.autodispose.AutoDisposeConverter
 
@@ -24,7 +25,6 @@ open class BaseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        RLog.d("${this.javaClass.simpleName}--onResume")
     }
 
     override fun onPause() {
