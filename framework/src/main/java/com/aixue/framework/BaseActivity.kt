@@ -1,6 +1,6 @@
-package com.aixue.sodu.main
+package com.aixue.framework
 
-import com.aixue.framework.R
+import android.os.Bundle
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
 /**
@@ -11,8 +11,27 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
  */
 open class BaseActivity : RxAppCompatActivity() {
 
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_from_right)
+    public override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    public override fun onStart() {
+        super.onStart()
+    }
+
+    public override fun onResume() {
+        super.onResume()
+    }
+
+    public override fun onPause() {
+        super.onPause()
+    }
+
+    public override fun onStop() {
+        super.onStop()
+    }
+
+    public override fun onDestroy() {
+        super.onDestroy()
     }
 }

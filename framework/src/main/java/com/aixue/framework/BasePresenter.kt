@@ -1,39 +1,38 @@
-package com.aixue.sodu.main
+package com.aixue.framework
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
-import com.aixue.framework.FullLifecycleObserver
-import com.aixue.mlog.RLog
+import com.aixue.framework.log.LogProxy
 import com.uber.autodispose.AutoDisposeConverter
 
 open class BasePresenter<V : BaseView> : LifecycleEventObserver, FullLifecycleObserver {
     override fun onCreate(owner: LifecycleOwner) {
-        RLog.d("${this.javaClass.name}.onCreate ")
+        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onCreate ")
     }
 
     override fun onStart(owner: LifecycleOwner) {
-        RLog.d("${this.javaClass.name}.onStart ")
+        LogProxy.getInstance().debug(null,"${this.javaClass.name}.onStart ")
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        RLog.d("${this.javaClass.name}.onResume ")
+        LogProxy.getInstance().debug(null,"${this.javaClass.name}.onResume ")
     }
 
     override fun onPause(owner: LifecycleOwner) {
-        RLog.d("${this.javaClass.name}.onPause ")
+        LogProxy.getInstance().debug(null,"${this.javaClass.name}.onPause ")
     }
 
     override fun onStop(owner: LifecycleOwner) {
-        RLog.d("${this.javaClass.name}.onStop ")
+        LogProxy.getInstance().debug(null,"${this.javaClass.name}.onStop ")
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        RLog.d("${this.javaClass.name}.onDestroy ")
+        LogProxy.getInstance().debug(null,"${this.javaClass.name}.onDestroy ")
     }
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-        RLog.d("BasePresenter.onStateChanged ${this.javaClass.name} ${event}")
+        LogProxy.getInstance().debug(null,"BasePresenter.onStateChanged ${this.javaClass.name} ${event}")
         when (event) {
             Lifecycle.Event.ON_CREATE -> onCreate(source)
             Lifecycle.Event.ON_START -> onStart(source)
@@ -50,7 +49,7 @@ open class BasePresenter<V : BaseView> : LifecycleEventObserver, FullLifecycleOb
 
 
     open fun onViewAttached(view: BaseView) {
-        RLog.d("${this.javaClass.name}.onViewAttached ")
+        LogProxy.getInstance().debug(null,"${this.javaClass.name}.onViewAttached ")
         mBaseView = view as V
     }
 
@@ -63,7 +62,7 @@ open class BasePresenter<V : BaseView> : LifecycleEventObserver, FullLifecycleOb
     }
 
     /**
-     * 返回 PresenterView 的 AutoDisposeConverter
+     * 返回 BaseView 的 AutoDisposeConverter
      */
     fun <T> bindToLifecycle(): AutoDisposeConverter<T> {
         return mBaseView.bindToLifecycle()
