@@ -1,5 +1,6 @@
 package com.aixue.sodu.main
 
+import com.aixue.framework.R
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
 /**
@@ -9,4 +10,9 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
  * 继承自RxAppCompatActivity原因，是实现请求数据
  */
 open class BaseActivity : RxAppCompatActivity() {
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_from_right)
+    }
 }
