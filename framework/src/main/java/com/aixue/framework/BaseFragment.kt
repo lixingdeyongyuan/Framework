@@ -1,7 +1,11 @@
 package com.aixue.framework
 
 import android.content.Context
+import android.content.res.Configuration
+import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.gyf.immersionbar.components.ImmersionOwner
+import com.gyf.immersionbar.components.ImmersionProxy
 
 /**
  * Created by haha on 2019/11/21.
@@ -11,7 +15,54 @@ import androidx.fragment.app.Fragment
  * 另外FragmentAdapter用的androidx,而androidx是未来的趋势
  *
  */
-open class BaseFragment : Fragment() {
+open class BaseFragment : Fragment(), ImmersionOwner {
+
+    private var mImmersionProxy: ImmersionProxy? = null
+
+    init {
+        if (isImmersion()) {
+            mImmersionProxy = ImmersionProxy(this)
+        }
+    }
+
+    open fun isImmersion(): Boolean {
+        return true
+    }
+
+    override fun onLazyAfterView() {
+
+    }
+
+    override fun onInvisible() {
+    }
+
+    override fun onLazyBeforeView() {
+    }
+
+    override fun immersionBarEnabled(): Boolean {
+        return isImmersion()
+    }
+
+    override fun onVisible() {
+    }
+
+    override fun initImmersionBar() {
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        mImmersionProxy?.isUserVisibleHint = isVisibleToUser
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mImmersionProxy?.onCreate(savedInstanceState)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        mImmersionProxy?.onActivityCreated(savedInstanceState)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -19,10 +70,12 @@ open class BaseFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        mImmersionProxy?.onResume()
     }
 
     override fun onPause() {
         super.onPause()
+        mImmersionProxy?.onPause()
     }
 
     override fun onDestroyView() {
@@ -31,6 +84,18 @@ open class BaseFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        mImmersionProxy?.onDestroy()
     }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        mImmersionProxy?.onHiddenChanged(hidden)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        mImmersionProxy?.onConfigurationChanged(newConfig)
+    }
+
 
 }

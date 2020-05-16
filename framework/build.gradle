@@ -50,5 +50,9 @@ dependencies {
     api "com.uber.autodispose:autodispose-ktx:${autodispose_version}"
     api "com.uber.autodispose:autodispose-android-ktx:${autodispose_version}"
     api "com.uber.autodispose:autodispose-android-archcomponents-ktx:${autodispose_version}"
+    // 基础依赖包，必须要依赖
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现（可选）
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
 
 }
