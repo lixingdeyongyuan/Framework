@@ -1,6 +1,7 @@
 package com.aixue.framework
 
 import android.content.Context
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 /**
@@ -31,6 +32,10 @@ open class BaseFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    open fun toast(msg:String){
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
     }
 
 }
