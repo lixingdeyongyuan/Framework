@@ -3,6 +3,7 @@ package com.aixue.framework
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
@@ -97,5 +98,8 @@ open class BaseFragment : Fragment(), ImmersionOwner {
         mImmersionProxy?.onConfigurationChanged(newConfig)
     }
 
+    open fun toast(msg: CharSequence) {
+        Toast.makeText(this.context, msg, Toast.LENGTH_LONG).show()
+    }
 
 }
