@@ -1,6 +1,7 @@
 package com.aixue.framework
 
 import android.os.Bundle
+import com.aixue.dialogmgr.DialogMgr
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
 /**
@@ -10,6 +11,8 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
  * 继承自RxAppCompatActivity原因，是实现请求数据
  */
 open class BaseActivity : RxAppCompatActivity() {
+
+    private var mDialogMgr: DialogMgr? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,4 +37,12 @@ open class BaseActivity : RxAppCompatActivity() {
     public override fun onDestroy() {
         super.onDestroy()
     }
+
+    public fun getDialogMgr(): DialogMgr {
+        if (mDialogMgr == null) {
+            mDialogMgr = DialogMgr(supportFragmentManager)
+        }
+        return mDialogMgr!!
+    }
+
 }

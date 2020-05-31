@@ -3,9 +3,6 @@ package com.aixue.framework
 import android.os.Bundle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.aixue.framework.BaseFragment
-import com.aixue.framework.BaseView
-import com.aixue.framework.RxLifecycleUtils
 import com.uber.autodispose.AutoDisposeConverter
 
 open abstract class BaseMvpFragment<P : BasePresenter<V>, V : BaseView> : BaseFragment(), BaseView {

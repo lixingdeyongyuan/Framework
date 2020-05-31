@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.aixue.dialogmgr.DialogMgr
 import com.gyf.immersionbar.components.ImmersionOwner
 import com.gyf.immersionbar.components.ImmersionProxy
 
@@ -19,6 +20,7 @@ import com.gyf.immersionbar.components.ImmersionProxy
 open class BaseFragment : Fragment(), ImmersionOwner {
 
     private var mImmersionProxy: ImmersionProxy? = null
+    private var mDialogMgr: DialogMgr? = null
 
     init {
         if (isImmersion()) {
@@ -102,4 +104,10 @@ open class BaseFragment : Fragment(), ImmersionOwner {
         Toast.makeText(this.context, msg, Toast.LENGTH_LONG).show()
     }
 
+    public fun getDialogMgr(): DialogMgr {
+        if (mDialogMgr == null) {
+            mDialogMgr = DialogMgr(childFragmentManager)
+        }
+        return mDialogMgr!!
+    }
 }
