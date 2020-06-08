@@ -1,21 +1,15 @@
 package com.aixue.framework
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aixue.framework.focus.OnFirstGetWindowFocusListener
 
-class Test : BaseFragment(), OnFirstGetWindowFocusListener {
-    override fun onFirstGetWindowFocus() {
-        Log.d("rlog", "Test.onFirstGetWindowFocus ")
+class Test : BaseFragment() {
+
+    override fun isImmersion(): Boolean {
+        return false
     }
-
-    override fun isListenFirstGetWindowFocus(): Boolean {
-        return true
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,8 +21,5 @@ class Test : BaseFragment(), OnFirstGetWindowFocusListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        addOnFirstGetWindowFocusListener(this)
     }
-
 }
