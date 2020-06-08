@@ -1,6 +1,7 @@
 package com.aixue.framework
 
 import android.os.Bundle
+import com.aixue.framework.focus.OnWindowFocusChangeListener
 import com.aixue.framework.log.LogProxy
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
@@ -11,6 +12,8 @@ import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
  * 继承自RxAppCompatActivity原因，是实现请求数据
  */
 open class BaseActivity : RxAppCompatActivity() {
+
+    private var mOnWindowFocusChangeListeners: ArrayList<OnWindowFocusChangeListener>? = null
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,4 +49,23 @@ open class BaseActivity : RxAppCompatActivity() {
         super.finish()
         overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_from_right)
     }
+
+    fun addOnWindowFocusChangeListener(onWindowFocusChangeListener: OnWindowFocusChangeListener) {
+        if (mOnWindowFocusChangeListeners == null) {
+            mOnWindowFocusChangeListeners = ArrayList<OnWindowFocusChangeListener>()
+        }
+        mOnWindowFocusChangeListeners?.add(onWindowFocusChangeListener)
+    }
+
+    fun removeOnWindowFocusChangeListener(onWindowFocusChangeListener: OnWindowFocusChangeListener) {
+        mOnWindowFocusChangeListeners?.remove(onWindowFocusChangeListener)
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        mOnWindowFocusChangeListeners?.forEach {
+            it.onWindowFocusChanged(hasFocus)
+        }
+    }
+
 }
