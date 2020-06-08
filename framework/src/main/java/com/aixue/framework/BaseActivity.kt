@@ -1,8 +1,8 @@
 package com.aixue.framework
 
 import android.os.Bundle
+import com.aixue.dialogmgr.DialogMgr
 import com.aixue.framework.focus.OnWindowFocusChangeListener
-import com.aixue.framework.log.LogProxy
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
 
 /**
@@ -15,35 +15,39 @@ open class BaseActivity : RxAppCompatActivity() {
 
     private var mOnWindowFocusChangeListeners: ArrayList<OnWindowFocusChangeListener>? = null
 
+    private var mDialogMgr: DialogMgr? = null
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onCreate")
     }
 
     public override fun onStart() {
         super.onStart()
-        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onStart")
     }
 
     public override fun onResume() {
         super.onResume()
-        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onResume")
     }
 
     public override fun onPause() {
         super.onPause()
-        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onPause")
     }
 
     public override fun onStop() {
         super.onStop()
-        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onStop")
     }
 
     public override fun onDestroy() {
         super.onDestroy()
-        LogProxy.getInstance().debug(null, "${this.javaClass.name}.onDestroy")
     }
+
+    public fun getDialogMgr(): DialogMgr {
+        if (mDialogMgr == null) {
+            mDialogMgr = DialogMgr(supportFragmentManager)
+        }
+        return mDialogMgr!!
+    }
+
 
     fun addOnWindowFocusChangeListener(onWindowFocusChangeListener: OnWindowFocusChangeListener) {
         if (mOnWindowFocusChangeListeners == null) {
