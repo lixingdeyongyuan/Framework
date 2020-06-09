@@ -2,6 +2,7 @@ package com.aixue.framework
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
+import com.aixue.dialogmgr.DialogMgr
 import com.uber.autodispose.AutoDisposeConverter
 
 interface BaseView {
@@ -14,4 +15,5 @@ interface BaseView {
 
     abstract fun <T> bindToLifecycle(event: Lifecycle.Event): AutoDisposeConverter<T>
 
+    abstract fun getDialogMgr(): DialogMgr
 }
